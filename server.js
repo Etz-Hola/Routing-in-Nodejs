@@ -39,7 +39,6 @@ app.use(cors(corsOptions));
 // })
 
 
-
 //    OR  the other  alternative to we can use to get routh paths
 
 // app.get('/', (reg, res) => {
