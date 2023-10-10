@@ -4,15 +4,19 @@ const path = require('path')
 
 
 router.get('^/$|/index(.html)?', (reg, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'))
-})
+    res.sendFile(path.join(__dirname, '..', 'views', 'index.html'))
+});
 
 
 
 router.get('/new-page(.html)?/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'new-page.html'))
-})
+    res.sendFile(path.join(__dirname, '..', 'views', 'new-page.html'))
+});
 
-router.get('/testing(.html)?/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'testing.html'))
-})
+
+router.get('/testing(.html)?', (req, res) => {
+    res.redirect(301, "new-page.html")
+});
+
+module.exports = router
+ 
