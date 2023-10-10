@@ -11,5 +11,6 @@ body {
     background-color: #000;
     display: grid;
     place-content: center;
+    /* text-align: center; */
 
 }

@@ -11,8 +11,11 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
 //static ROUTES
-app.use(express.static(path.join(__dirname, "public")));
-app.use('/subdir', require('./routes/subdir'));
+app.use('/', require('./routes/root.js'))
+app.use('/subdir', require('./routes/subdir'))
+// app.use('/', express.static(path.join(__dirname, "public")));
+// app.use('/subdir', express.static(path.join(__dirname, '/public')));
+
 
 app.use(logger)
 
@@ -54,19 +57,6 @@ app.use(cors(corsOptions));
 
 
 //      OR   the other  alternative to we can use to get routh paths
-app.get('^/$|/index(.html)?', (reg, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'))
-})
-
-
-
-app.get('/new-page(.html)?/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'new-page.html'))
-})
-
-// app.get('/testing', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'views', 'testing.html'))
-// })
 
 
 //  REDIRECT
