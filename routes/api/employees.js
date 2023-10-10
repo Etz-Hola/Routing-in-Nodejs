@@ -27,7 +27,7 @@ data.employees = require('../../data/employees.json')
             res.json({"id" : req.body.id})
         })
 
-        router.route('/ id')
+        router.route('/: id')
         .get((req, res) => {
             res.json({"id" : req.params.id})
         })
