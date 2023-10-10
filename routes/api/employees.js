@@ -23,7 +23,7 @@ data.employees = require('../../data/employees.json')
             })
         })
 
-        delete((req, res) => {
+        .delete((req, res) => {
             res.json({"id" : req.body.id})
         })
 
