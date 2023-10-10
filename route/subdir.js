@@ -6,12 +6,12 @@ const path = require('path');
 
 
 
-app.get('^/$|/index(.html)?', (reg, res) => {
+router.get('^/$|/index(.html)?', (reg, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'))
 })
 
 
-app.get('/new-page(.html)?/', (req, res) => {
+router.get('/new-page(.html)?/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'new-page.html'))
 })
 
