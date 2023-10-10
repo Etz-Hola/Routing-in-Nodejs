@@ -1,6 +1,3 @@
-
-
-
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -9,16 +6,19 @@ const {logger} = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errHandler');
 const PORT = process.env.Port || 4100
 
-//buiting in
+//buiting in 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
 //static ROUTES
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")));
+app.use('/subdir', require('./routes/subdir'));
 
 app.use(logger)
 
-const whitelist = ['https://www.yourdoman.com', 'http://127.0.0.1:5500', 'http://localhost:3000']
+const whitelist = ['https://www.yourdomain.com', 
+    'http://127.0.0.1:5500', 
+    'http://localhost:3000']
 
 const corsOptions = {
     origin:(origin, callback) => {
@@ -37,7 +37,7 @@ app.use(cors(corsOptions));
 // app.get('/', (reg, res) => {
 //     res.sendFile('/views/index.html', {root: __dirname})
 // })
-
+ 
 
 //    OR  the other  alternative to we can use to get routh paths
 
@@ -47,6 +47,7 @@ app.use(cors(corsOptions));
 
 
 //      OR   the other  alternative to we can use to get routh paths
+          //reges is   '^/$|/
 // app.get('^/$|/index.html', (reg, res) => {
 //     res.sendFile(path.join(__dirname, 'views', 'index.html'))
 // })
@@ -113,8 +114,6 @@ const cohort4 = (req, res, next) => {
 }
 
 app.get('/big-devs(.html)?', [cohort1, cohort2, cohort3, cohort4])
-
-
 
 
 
